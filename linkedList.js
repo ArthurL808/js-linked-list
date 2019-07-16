@@ -28,36 +28,49 @@ function linkedListGenerator() {
     return newNode;
   }
   function get(n) {
-     let current = head
-      if(n === 0){
-          return head
-      } 
-      for (let i = 0; i < n; i++) {
-          if(current.next === null){
-              return false;
-          }
-          current = current.next
-      }
-      return current
-  }
-  function remove(n) {
-      let currentNode = head
-      if(n === 0){
-        currentNode = currentNode.next;
-        head = currentNode.next
-      }
-      else if (get(n) === tail){
-        get(n - 1).next = null;
-        tail = get(n-1)
-      }
-      else if(get(n) === false){
+    let current = head;
+    if (n === 0) {
+      return head;
+    }
+    for (let i = 0; i < n; i++) {
+      if (current.next === null) {
         return false;
       }
-      else{
-        get(n-1).next = get(n+1)
-      }
+      current = current.next;
+    }
+    return current;
   }
-  function insert(value, number) {}
+  function remove(n) {
+    let currentNode = head;
+    if (n === 0) {
+      head = currentNode.next;
+    } else if (get(n) === tail) {
+      get(n - 1).next = null;
+      tail = get(n - 1);
+    } else if (get(n) === false) {
+      return false;
+    } else {
+      get(n - 1).next = get(n + 1);
+    }
+  }
+  function insert(value, n) {
+    node = {
+      value:value,
+      next:null
+    }
+  if(get(n) === 0){
+    node.next = head
+    head = node
+  }
+  else if (get(n) === tail){
+    get(n).next = node
+    tail = node
+  }
+  else{
+    get(n-1).next = node
+    node.next = get(n);
+  }
+  }
   return {
     getHead: getHead,
     getTail: getTail,
