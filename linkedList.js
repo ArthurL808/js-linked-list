@@ -27,12 +27,12 @@ function linkedListGenerator() {
     tail = newNode;
     return newNode;
   }
-  function get(number) {
+  function get(n) {
      let current = head
-      if(number === 0){
+      if(n === 0){
           return head
       } 
-      for (let i = 0; i < number; i++) {
+      for (let i = 0; i < n; i++) {
           if(current.next === null){
               return false;
           }
@@ -40,23 +40,22 @@ function linkedListGenerator() {
       }
       return current
   }
-  function remove(number) {
+  function remove(n) {
       let currentNode = head
-      let prevNode;
-      if(number === 0){
-        return currentNode.next
+      if(n === 0){
+        currentNode = currentNode.next;
+        head = currentNode.next
       }
-      for (let i = 0; i <= number; i++) {
-        if(i === number){
-          prevNode.next = currentNode.next
-        }      
-        if(currentNode.next === null){
-          return false;
-        } 
-        prevNode = currentNode
-        currentNode = currentNode.next
+      else if (get(n) === tail){
+        get(n - 1).next = null;
+        tail = get(n-1)
       }
-      
+      else if(get(n) === false){
+        return false;
+      }
+      else{
+        get(n-1).next = get(n+1)
+      }
   }
   function insert(value, number) {}
   return {
