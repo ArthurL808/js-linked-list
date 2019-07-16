@@ -61,9 +61,8 @@ function linkedListGenerator() {
     if (n === 0) {
       node.next = head;
       head = node;
-    } else if (get(n) === tail) {
-      get(n).next = node;
-      tail = node;
+    } else if (get(n) === tail.next) {
+      return false;
     } else {
       node.next = get(n);
       get(n - 1).next = node;
