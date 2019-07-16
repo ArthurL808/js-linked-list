@@ -46,14 +46,17 @@ function linkedListGenerator() {
       if(number === 0){
         return currentNode.next
       }
-      for (let i = 0; i < number; i++) {
+      for (let i = 0; i <= number; i++) {
+        if(i === number){
+          prevNode.next = currentNode.next
+        }      
         if(currentNode.next === null){
           return false;
-        }       
+        } 
         prevNode = currentNode
         currentNode = currentNode.next
       }
-      prevNode.next = currentNode.next
+      
   }
   function insert(value, number) {}
   return {
