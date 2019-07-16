@@ -55,21 +55,19 @@ function linkedListGenerator() {
   }
   function insert(value, n) {
     node = {
-      value:value,
-      next:null
+      value: value,
+      next: null
+    };
+    if (n === 0) {
+      node.next = head;
+      head = node;
+    } else if (get(n) === tail) {
+      get(n).next = node;
+      tail = node;
+    } else {
+      node.next = get(n);
+      get(n - 1).next = node;
     }
-  if(get(n) === 0){
-    node.next = head
-    head = node
-  }
-  else if (get(n) === tail){
-    get(n).next = node
-    tail = node
-  }
-  else{
-    get(n-1).next = node
-    node.next = get(n);
-  }
   }
   return {
     getHead: getHead,
