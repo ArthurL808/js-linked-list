@@ -31,6 +31,8 @@ function linkedListGenerator() {
     let current = head;
     if (n === 0) {
       return head;
+    } else if(n < 0){
+      return false
     }
     for (let i = 0; i < n; i++) {
       if (current.next === null) {
