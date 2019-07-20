@@ -71,7 +71,7 @@ function linkedListGenerator() {
     }
   }
   return {
-    getHead: 
+    getHead: getHead,
     getTail: getTail,
     add: add,
     remove: remove,
